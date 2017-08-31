@@ -6,4 +6,12 @@ exports.assertEqual = function(result, expected, name) {
 	} else {
 		console.log("Test: " + name + " failed, result = " + result + " expected = " + expected);
 	}
-}
+};
+
+exports.assertRegexMatch = function(result, regex, name) {
+	if (regex.test(result)){
+		console.log("Test: " + name + " passed");
+	} else {
+		console.log("Test: " + name + " failed, result = " + result);
+	}	
+};
