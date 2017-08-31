@@ -1,0 +1,27 @@
+{
+  "name": "farming",
+  "version": "0.0.1",
+  "description": "A revolutionary macro language for the web",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jweinst1/farming.git"
+  },
+  "keywords": [
+    "macros",
+    "compiler",
+    "parser",
+    "javascript",
+    "macro",
+    "language"
+  ],
+  "author": "Joshua Weinstein <jweinst1@berkeley.edu> (https://github.com/jweinst1)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jweinst1/farming/issues"
+  },
+  "homepage": "https://github.com/jweinst1/farming#readme"
+}
