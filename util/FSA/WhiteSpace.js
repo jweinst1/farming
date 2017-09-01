@@ -20,7 +20,7 @@ var WhiteSpaceBefore = function() {
 	};
 };
 
-exports.WhiteSpaceBefore = WhiteSpaceBefore;
+
 
 var WhiteSpaceAfter = function() {
 	this.final = false;
@@ -41,4 +41,3 @@ var WhiteSpaceAfter = function() {
 	};
 };
 
-exports.WhiteSpaceAfter = WhiteSpaceAfter;
