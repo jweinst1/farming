@@ -40,7 +40,7 @@ var CodeState = (function(){
 				}
 				else return !this.state;
 				break;
-			case innerState.S_QUOTE:
+			case innerState.S_QUOTE: 
 				if(char === "'") {
 					this.state = innerState.BASE;
 					return !0;
