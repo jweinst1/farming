@@ -40,7 +40,7 @@ var CodeState = (function(){
 				}
 				else return !this.state;
 				break;
-			case innerState.S_QUOTE: 
+			case innerState.S_QUOTE:
 				if(char === "'") {
 					this.state = innerState.BASE;
 					return !0;
@@ -56,7 +56,6 @@ var CodeState = (function(){
 				if(char === '/') this.state = innerState.SLINE_COMMENT;
 				else if(char === '*' ) this.state = innerState.MLINE_COMMENT;
 				else return !this.state;
-				break;
 			case innerState.SLINE_COMMENT:
 				break;
 			case innerState.MLINE_COMMENT:
