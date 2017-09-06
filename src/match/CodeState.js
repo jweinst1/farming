@@ -55,6 +55,7 @@ var CodeState = (function(){
 			case innerState.FSLASH:
 				if(char === '/') this.state = innerState.SLINE_COMMENT;
 				else if(char === '*' ) this.state = innerState.MLINE_COMMENT;
+				else return !this.state;
 				break;
 			case innerState.SLINE_COMMENT:
 				break;
