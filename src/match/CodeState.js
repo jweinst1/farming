@@ -15,23 +15,46 @@ var CodeState = (function(){
 		STAR:7
 	};
 
+	//lookup table for quick transition from base state
+	var baseTransition = {
+		'"':1,
+		"'":2,
+		'`':3,
+		'/':4
+	};
+
 
 	function CodeState(){
-		this.isCode = true;
 		this.state = innerState.BASE;
 	}
 
 	CodeState.prototype.input = function(char) {
 		switch(this.state) {
 			case innerState.BASE:
-				break;
+				if(char in baseTransition) this.state = baseTransition[char];
+				return !this.state;
 			case innerState.D_QUOTE:
+				if(char === '"') {
+					this.state = innerState.BASE;
+					return !0;
+				}
+				else return !this.state;
 				break;
 			case innerState.S_QUOTE:
-				break;
+				if(char === "'") {
+					this.state = innerState.BASE;
+					return !0;
+				}
+				else return !this.state;
 			case innerState.TEMP:
-				break;
+				if(char === '`') {
+					this.state = innerState.BASE;
+					return !0;
+				}
+				else return !this.state;
 			case innerState.FSLASH:
+				if(char === '/') this.state = innerState.SLINE_COMMENT;
+				else if(char === '*' ) this.state = innerState.MLINE_COMMENT;
 				break;
 			case innerState.SLINE_COMMENT:
 				break;
