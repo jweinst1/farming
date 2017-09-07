@@ -36,16 +36,14 @@ var CodeState = (function(){
 			case innerState.D_QUOTE:
 				if(char === '"') {
 					this.state = innerState.BASE;
-					return !0;
 				}
-				else return !this.state;
+				return !1;
 				break;
 			case innerState.S_QUOTE:
 				if(char === "'") {
 					this.state = innerState.BASE;
-					return !1;
 				}
-				else return !this.state;
+				return !1;
 			case innerState.TEMP:
 				if(char === '`') {
 					this.state = innerState.BASE;
@@ -71,19 +69,16 @@ var CodeState = (function(){
 					return !1;
 				}
 				else return !this.state;
-				break;
 			case innerState.MLINE_COMMENT:
 				if(char === '*') {
 					this.state = innerState.STAR;
 				}
 				return !1;
-				break;
 			case innerState.STAR:
 				if(char === '/') {
 					this.state = innerState.BASE;
 				}
 				return !1;
-				break;
 		}
 	};
 	return CodeState;
