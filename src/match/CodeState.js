@@ -43,13 +43,13 @@ var CodeState = (function(){
 			case innerState.S_QUOTE:
 				if(char === "'") {
 					this.state = innerState.BASE;
-					return !0;
+					return !1;
 				}
 				else return !this.state;
 			case innerState.TEMP:
 				if(char === '`') {
 					this.state = innerState.BASE;
-					return !0;
+					return !1;
 				}
 				else return !this.state;
 			case innerState.FSLASH:
@@ -63,14 +63,26 @@ var CodeState = (function(){
 				}
 				else {
 					this.state = innerState.BASE;
-					return !0;
+					return !this.state;
 				}
-
 			case innerState.SLINE_COMMENT:
+				if(char === '\n') {
+					this.state = innerState.BASE;
+					return !1;
+				}
+				else return !this.state;
 				break;
 			case innerState.MLINE_COMMENT:
+				if(char === '*') {
+					this.state = innerState.STAR;
+				}
+				return !1;
 				break;
 			case innerState.STAR:
+				if(char === '/') {
+					this.state = innerState.BASE;
+				}
+				return !1;
 				break;
 		}
 	};
