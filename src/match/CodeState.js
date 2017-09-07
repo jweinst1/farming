@@ -53,15 +53,15 @@ var CodeState = (function(){
 			case innerState.FSLASH:
 				if(char === '/') {
 					this.state = innerState.SLINE_COMMENT;
-					return !this.state;
+					return !0;
 				}
 				else if(char === '*' ) {
 					this.state = innerState.MLINE_COMMENT;
-					return !this.state;
+					return !0;
 				}
 				else {
 					this.state = innerState.BASE;
-					return !this.state;
+					return !0;
 				}
 			case innerState.SLINE_COMMENT:
 				if(char === '\n') {
