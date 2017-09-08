@@ -38,7 +38,6 @@ var CodeState = (function(){
 					this.state = innerState.BASE;
 				}
 				return !1;
-				break;
 			case innerState.S_QUOTE:
 				if(char === "'") {
 					this.state = innerState.BASE;
