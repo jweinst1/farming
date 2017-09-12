@@ -9,11 +9,14 @@ function StringValue(string) {
   }
 }
 
-var FarmingMacro = (function(){
-
-  function FarmingMacro(){
-
+var FarmingMacro = (function() {
+  function FarmingMacro() {
+    this.elements = [];
   }
+
+  FarmingMacro.prototype.addStringElem = function(string) {
+    this.elements.push(new StringValue(string));
+  };
   return FarmingMacro;
 })();
 
