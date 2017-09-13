@@ -1,0 +1,9 @@
+{
+  "parameters":[
+    "a", "b"
+  ],
+  "indexes":[1, 3],
+  "elements":[
+    " a > b ? console.log(a) : console.log(b) "
+  ]
+}
