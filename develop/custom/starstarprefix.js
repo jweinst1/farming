@@ -38,7 +38,7 @@ var ParseStarStarPrefix = (function() {
           if(string[i] === '\n') return expr;
           else expr += string[i];
           break;
-      }
+      } 
     }
     return expr;
   }
