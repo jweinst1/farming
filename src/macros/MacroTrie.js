@@ -4,7 +4,7 @@
   * Implements the MacroTrie data structure used for storing nestable textComponents
   * macros.
   * Example:
-  * Phrase = ["@@", "%%%CODE"]
+  * Phrase = ["@", "@", "%%%CODE", "\n"]
   * note: %%%CODE and %%%END are reserved symbols for macros
   */
 
@@ -22,8 +22,20 @@ exports.isReservedMacroSym = isReservedMacroSym;
 var MacroTrie = (function(){
   function MacroTrie(){
     this.trie = {};
-    
   }
+
+  MacroTrie.prototype.insert = function (seq) {
+    var currentNode = this.trie;
+    for (var i = 0; i < seq.length; i++) {
+      if(seq[i] in currentNode) currentNode = currentNode[seq[i]];
+      else {
+        currentNode[seq[i]] = {};
+        currentNode = currentNode[seq[i]];
+      }
+    }
+    currentNode["%%%END"] = true;
+  };
+  
   return MacroTrie;
 })();
 
