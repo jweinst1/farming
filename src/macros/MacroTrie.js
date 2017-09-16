@@ -24,6 +24,14 @@ var MacroTrie = (function(){
     this.trie = {};
   }
 
+  MacroTrie.prototype.getTrieJSON = function (spacing) {
+    return JSON.stringify(this.trie, null, spacing)
+  };
+
+  MacroTrie.prototype.checkRoot = function(char) {
+    return char in this.trie;
+  };
+
   MacroTrie.prototype.insert = function (seq) {
     var currentNode = this.trie;
     for (var i = 0; i < seq.length; i++) {
@@ -35,7 +43,7 @@ var MacroTrie = (function(){
     }
     currentNode["%%%END"] = true;
   };
-  
+
   return MacroTrie;
 })();
 
