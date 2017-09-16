@@ -10,7 +10,8 @@
 
 var reservedMacroSymbols = {
   "%%%CODE":true,
-  "%%%END":true
+  "%%%END":true,
+  "@def":true
 };
 
 var isReservedMacroSym = function(word) {
