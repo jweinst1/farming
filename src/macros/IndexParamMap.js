@@ -1,6 +1,6 @@
 //Param -> index map data structure
 
-function ParamMap(params) {
+var ParamMap = function(params) {
   this.map = {};
   for (var i = 0; i < params.length; i++) {
     this.map[params[i]] = param;
@@ -8,3 +8,10 @@ function ParamMap(params) {
   }
   this.length = params.length;
 }
+
+ParamMap.prototype.add = function (param) {
+  this.map[param] = this.length++;
+  this.map[this.length] = param;
+};
+
+exports.ParamMap = ParamMap;
