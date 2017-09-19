@@ -7,6 +7,7 @@
 var DefMacroContainer = (function() {
   function DefMacroContainer(){
     this.phrase = [];
+    this.indexes = [];
   }
   return DefMacroContainer;
 })();
