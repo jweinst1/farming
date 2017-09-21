@@ -33,7 +33,16 @@ var FuncMacro = (function(){
   function FuncMacro(){
     this.params = {};
     this.components = [];
+    this.hasArbParam = false; //can only have one arbitrary parameter
+    this.acceptingParams = true;
   }
+
+  FuncMacro.prototype.clean = function () {
+    this.params = {};
+    this.components = [];
+    this.hasArbParam = false;
+    this.acceptingParams = true;
+  };
 
   FuncMacro.prototype.hasParam = function (param) {
     return param in this.params;
