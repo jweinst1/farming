@@ -31,8 +31,16 @@ var FuncMacro = (function(){
     this.components = [];
   }
 
+  FuncMacro.prototype.hasParam = function (param) {
+    return param in this.params;
+  };
+
   FuncMacro.prototype.addComponent = function (string) {
     this.components.push(string);
+  };
+  //checks if the component at some index is a paramter
+  FuncMacro.prototype.componentIsParam = function (index) {
+    return this.components[index] in this.params;
   };
 
   FuncMacro.prototype.addParam = function (param, values) {
@@ -44,7 +52,7 @@ var FuncMacro = (function(){
     if(param in this.params) {
       this.params[param].pushValue(val);
     }
-    else throw new Error("param does not exist");
+    else throw new Error("Parameter: " + param +  " does not exist");
   };
 
   FuncMacro.prototype.setParamArbValue = function (param, vals) {
@@ -53,12 +61,17 @@ var FuncMacro = (function(){
         this.params[param].pushValue(vals[i]);
       }
     }
-    else throw new Error("param does not exist");
+    else throw new Error("Parameter: " + param +  " does not exist");
   };
 
   FuncMacro.prototype.getValueForParam = function (param) {
     if(this.params[param].length === 1) return this.params[param].values[0];
     else return this.params[param].values;
+  };
+
+  FuncMacro.prototype.iterValueForParam = function (param) {
+    if(this.params[param].isEmpty()) return false;
+    else this.params[param].getValue();
   };
 
   FuncMacro.prototype.paramHasValue = function(param) {
