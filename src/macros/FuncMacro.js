@@ -77,6 +77,26 @@ var FuncMacro = (function(){
   FuncMacro.prototype.paramHasValue = function(param) {
     return !(this.params[param].isEmpty());
   };
+
+  FuncMacro.prototype.loadValuesFromObject = function (dict) {
+    for (var key in dict) {
+      if(dict[key].constructor.name === 'Array') {
+        this.addParam(key, dict[key]); //arbitrary parameter
+      }
+      else this.addParam(key, [dict[key]]);
+    }
+  };
+
+  FuncMacro.prototype.validateParamsNotEmpty = function () {
+    for (var key in this.params) {
+      if(this.params[key].isEmpty()) return false;
+    }
+    return true;
+  };
+
+  FuncMacro.prototype.makeString = function () {
+
+  };
   return FuncMacro;
 })();
 
