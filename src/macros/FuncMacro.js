@@ -18,6 +18,10 @@ function MacroValue(param, values) {
   MacroValue.prototype.isEmpty = function () {
     return this.values.length === 0;
   };
+
+  MacroValue.prototype.isArbitrary = function () {
+    return this.values.length > 1;
+  };
 }
 
 var makeMacroValue = function(obj) {
@@ -46,6 +50,7 @@ var FuncMacro = (function(){
   FuncMacro.prototype.addParam = function (param, values) {
     values = values || [];
     this.params[param] = new MacroValue(param, values);
+    this.components.push(param);
   };
 
   FuncMacro.prototype.setParamValue = function (param, val) {
@@ -95,9 +100,23 @@ var FuncMacro = (function(){
   };
 
   FuncMacro.prototype.makeString = function () {
-
+    if(!this.validateParamsNotEmpty()) throw new Error("Func Macro parameters not entirely set.");
+    var madeString = "";
+    for (var i = 0; i < this.components.length; i++) {
+      if(this.componentIsParam(i)) {
+        madeString += this.getValueForParam(this.components[i]);
+      }
+      else madeString += this.components[i];
+    }
+    return madeString;
   };
   return FuncMacro;
 })();
 
 exports.FuncMacro = FuncMacro;
+
+var test = new FuncMacro();
+test.addComponent("console.log(");
+test.addParam("arg", "5, 5, 5");
+test.addComponent(");");
+console.log(test.makeString());
