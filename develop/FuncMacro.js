@@ -2,6 +2,8 @@
 //implements object that can be exported to JSON as well.
 // EXAMPLE ::: @def name(arg1, arg2) {console.log(arg1, arg2)}
 
+
+
 //small object that stores parameter value or arbitrary values
 function MacroValue(param, values) {
   this.param = param;

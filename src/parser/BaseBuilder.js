@@ -41,7 +41,9 @@ exports.BaseMacroBuilder = BaseMacroBuilder
 
 var BaseCallBuilder = (function(){
   function BaseCallBuilder() {
-
+    this.macroName = "";
+    this.currentArg = "";
+    this.args = [];
   }
 
   return BaseCallBuilder;
