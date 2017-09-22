@@ -43,7 +43,7 @@ var MacroBase = (function() {
         for (var i = 0; i < this.components.length; i++) {
           if(this.components[i] in this.params) {
             if(this.components[i] === arbParam) {
-              subArbString += this.params[this.components[i]].unshift();
+              subArbString += this.params[this.components[i]].shift();
             }
             else subArbString += this.params[this.components[i]]
           }
@@ -68,5 +68,6 @@ var MacroBase = (function() {
 
 exports.MacroBase = MacroBase
 
-var test = new MacroBase(["a"], ["console.log(", "a", ");"]);
-console.log(test.makeString("4"));
+var test = new MacroBase(["a", "b"], ["console.log(", "a", ",", "b", ");"]);
+console.log(test.makeString(["333", ["4", "5", "6"]]));
+//console.log(333,4);console.log(333,5);console.log(333,6);
