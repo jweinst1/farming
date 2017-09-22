@@ -5,7 +5,8 @@
 var MacroBase = (function() {
   // creates a macro with specified fields but no values preset
   // note params is an array
-  function MacroBase(params, components){
+  function MacroBase(params, components, hasArb){
+    this.hasArb = hasArb; //boolean to check if last works as Arb
     this.params = {};
     this.components = components;
     this.paramOrder = params;
@@ -67,7 +68,7 @@ var MacroBase = (function() {
 })();
 
 exports.MacroBase = MacroBase
-
-var test = new MacroBase(["a", "b"], ["console.log(", "a", ",", "b", ");"]);
-console.log(test.makeString(["333", ["4", "5", "6"]]));
+/*
+var test = new MacroBase(["a", "b"], ["console.log(", "a", ",", "b", ");"], true);
+console.log(test.makeString(["333", ["4", "5", "6"]]));*/
 //console.log(333,4);console.log(333,5);console.log(333,6);
